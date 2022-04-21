@@ -10,7 +10,6 @@ class UrlService
 {
 
     private EntityManagerInterface $em;
-    
 
     public function __construct(EntityManagerInterface $em)
     {
@@ -20,6 +19,7 @@ class UrlService
     public function addUrl(string $longUrl, string $domain): Url
     {
         $url = new Url();
+
         $hash = $this->generateHash();
         $link = $_SERVER['HTTP_ORIGIN'] . "/$hash";
 
@@ -28,7 +28,7 @@ class UrlService
 
         $url->setHash($hash);
         $url->setLink($link);
-        $url->setCreatedAt(new \DateTimeImmutable);
+        $url->setCreatedAt(new \DateTimeInterface);
 
         $this->em->persist($url);
         $this->em->flush();

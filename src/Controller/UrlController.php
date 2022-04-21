@@ -12,12 +12,13 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class UrlController extends AbstractController
 {
-    private int $id;
+
     private UrlService $urlService;
 
 
     public function __construct(UrlService $urlService)
-    {
+    {   
+       
         $this->UrlService = $urlService;
     }
     #[Route('/url', name: 'app_url')]
